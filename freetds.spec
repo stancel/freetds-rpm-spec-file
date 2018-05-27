@@ -4,6 +4,7 @@
 # define with-unixodbc   /usr
 # define with-openssl    /usr/lib64/openssl
 # define enable-msdblib  yes
+# This command shows the value returned for the Library Directory - rpm --eval '%{_libdir}'
 
 # compute some additional dependency from vendor name
 # 
@@ -88,12 +89,12 @@ rm -rf "$RPM_BUILD_ROOT/%{_datadir}/doc/freetds"
 %post unixodbc
 echo "[FreeTDS]
 Description = FreeTDS unixODBC Driver
-Driver = /usr/lib/libtdsodbc.so.0
-Setup = /usr/lib/libtdsodbc.so.0" | odbcinst -i -d -r > /dev/null 2>&1 || true
+Driver = /usr/lib64/libtdsodbc.so.0
+Setup = /usr/lib64/libtdsodbc.so.0" | odbcinst -i -d -r > /dev/null 2>&1 || true
 echo "[SQL Server]
 Description = FreeTDS unixODBC Driver
-Driver = /usr/lib/libtdsodbc.so.0
-Setup = /usr/lib/libtdsodbc.so.0" | odbcinst -i -d -r > /dev/null 2>&1 || true
+Driver = /usr/lib64/libtdsodbc.so.0
+Setup = /usr/lib64/libtdsodbc.so.0" | odbcinst -i -d -r > /dev/null 2>&1 || true
 
 %preun unixodbc
 odbcinst -u -d -n 'FreeTDS' > /dev/null 2>&1 || true
