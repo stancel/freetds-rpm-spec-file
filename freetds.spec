@@ -71,7 +71,7 @@ fi
 if test ! -r "$ODBCDIR/include/sql.h"; then
 	ODBCDIR=/usr
 fi
-%configure --with-tdsver=auto --with-unixodbc=/tmp/unixODBC-2.3.1-1 --enable-msdblib --with-openssl=/usr/lib64/openssl
+%configure --with-tdsver=auto --with-unixodbc=/usr --enable-msdblib --with-openssl=/usr/lib64/openssl
 make RPM_OPT_FLAGS="$RPM_OPT_FLAGS"
  
 %install 
